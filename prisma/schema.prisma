@@ -1,0 +1,87 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Paciente {
+  id              String         @id @default(uuid())
+  nome            String
+  prontuario      String?
+  idade           Int?
+  statusProtocolo String?
+  userId          String? // ID do usuario no Supabase Auth
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  fichasACS       FichaACS[]
+  triagens        Triagem[]
+  scoresEAD       ScoreEAD[]
+}
+
+model FichaACS {
+  id             String    @id @default(uuid())
+  pacienteId     String
+  paciente       Paciente  @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  userId         String?   // ID do usuario
+  dataColeta     DateTime  @default(now())
+  acsNome        String?
+  mobilidade     String?
+  abvd           String?
+  intercorrencias Json?    // { naoTeve: boolean, upaVezes: number, hospVezes: number }
+  sintomas       String?
+  sintomasFreq   String?
+  cuidados       Json?     // string[]
+  cuidadosOutro  String?
+  dispositivos   String?
+  medAlterado    String?
+  medQual        String?
+  cuidadorNome   String?
+  cuidadorStatus String?
+  pioraRecente   String?
+  necessidade    String?
+  observacoes    Json?     // string[]
+  alertaFinal    String?
+  alertaQual     String?
+}
+
+model Triagem {
+  id                    String    @id @default(uuid())
+  pacienteId            String
+  paciente              Paciente  @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  userId                String?   // ID do usuario
+  dataAvaliacao         DateTime  @default(now())
+  origemDemanda         String?
+  profissional          String?
+  statusProtocolo       String?
+  a1                    Json?     // { resolutiva: boolean, razoavel: boolean, etc }
+  alta                  Json?
+  media                 Json?
+  e3                    Json?
+  classificacaoFinal    String?
+  servicoResponsavel    String?
+  frequenciaRecomendada String?
+  pontosIAEC            Int?
+}
+
+model ScoreEAD {
+  id                String    @id @default(uuid())
+  pacienteId        String
+  paciente          Paciente  @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  userId            String?   // ID do usuario
+  dataAvaliacao     DateTime  @default(now())
+  statusProtocolo   String?
+  origemDemanda     String?
+  profissional      String?
+  pontuacaoAnterior Int?
+  valores           Json?     // { intercorrencias: number, sintomas: number, etc }
+  scoreTotal        Int?
+  classificacao     String?
+  freqGeral         String?
+  freqACS           String?
+  freqEnf           String?
+  freqMed           String?
+}

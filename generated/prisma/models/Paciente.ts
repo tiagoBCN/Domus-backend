@@ -37,6 +37,7 @@ export type PacienteSumAggregateOutputType = {
 export type PacienteMinAggregateOutputType = {
   id: string | null
   nome: string | null
+  cpf: string | null
   prontuario: string | null
   idade: number | null
   statusProtocolo: string | null
@@ -48,6 +49,7 @@ export type PacienteMinAggregateOutputType = {
 export type PacienteMaxAggregateOutputType = {
   id: string | null
   nome: string | null
+  cpf: string | null
   prontuario: string | null
   idade: number | null
   statusProtocolo: string | null
@@ -59,6 +61,7 @@ export type PacienteMaxAggregateOutputType = {
 export type PacienteCountAggregateOutputType = {
   id: number
   nome: number
+  cpf: number
   prontuario: number
   idade: number
   statusProtocolo: number
@@ -80,6 +83,7 @@ export type PacienteSumAggregateInputType = {
 export type PacienteMinAggregateInputType = {
   id?: true
   nome?: true
+  cpf?: true
   prontuario?: true
   idade?: true
   statusProtocolo?: true
@@ -91,6 +95,7 @@ export type PacienteMinAggregateInputType = {
 export type PacienteMaxAggregateInputType = {
   id?: true
   nome?: true
+  cpf?: true
   prontuario?: true
   idade?: true
   statusProtocolo?: true
@@ -102,6 +107,7 @@ export type PacienteMaxAggregateInputType = {
 export type PacienteCountAggregateInputType = {
   id?: true
   nome?: true
+  cpf?: true
   prontuario?: true
   idade?: true
   statusProtocolo?: true
@@ -200,6 +206,7 @@ export type PacienteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PacienteGroupByOutputType = {
   id: string
   nome: string
+  cpf: string | null
   prontuario: string | null
   idade: number | null
   statusProtocolo: string | null
@@ -234,6 +241,7 @@ export type PacienteWhereInput = {
   NOT?: Prisma.PacienteWhereInput | Prisma.PacienteWhereInput[]
   id?: Prisma.StringFilter<"Paciente"> | string
   nome?: Prisma.StringFilter<"Paciente"> | string
+  cpf?: Prisma.StringNullableFilter<"Paciente"> | string | null
   prontuario?: Prisma.StringNullableFilter<"Paciente"> | string | null
   idade?: Prisma.IntNullableFilter<"Paciente"> | number | null
   statusProtocolo?: Prisma.StringNullableFilter<"Paciente"> | string | null
@@ -248,6 +256,7 @@ export type PacienteWhereInput = {
 export type PacienteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  cpf?: Prisma.SortOrderInput | Prisma.SortOrder
   prontuario?: Prisma.SortOrderInput | Prisma.SortOrder
   idade?: Prisma.SortOrderInput | Prisma.SortOrder
   statusProtocolo?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -261,11 +270,12 @@ export type PacienteOrderByWithRelationInput = {
 
 export type PacienteWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  cpf?: string
+  prontuario?: string
   AND?: Prisma.PacienteWhereInput | Prisma.PacienteWhereInput[]
   OR?: Prisma.PacienteWhereInput[]
   NOT?: Prisma.PacienteWhereInput | Prisma.PacienteWhereInput[]
   nome?: Prisma.StringFilter<"Paciente"> | string
-  prontuario?: Prisma.StringNullableFilter<"Paciente"> | string | null
   idade?: Prisma.IntNullableFilter<"Paciente"> | number | null
   statusProtocolo?: Prisma.StringNullableFilter<"Paciente"> | string | null
   userId?: Prisma.StringNullableFilter<"Paciente"> | string | null
@@ -274,11 +284,12 @@ export type PacienteWhereUniqueInput = Prisma.AtLeast<{
   fichasACS?: Prisma.FichaACSListRelationFilter
   triagens?: Prisma.TriagemListRelationFilter
   scoresEAD?: Prisma.ScoreEADListRelationFilter
-}, "id">
+}, "id" | "cpf" | "prontuario">
 
 export type PacienteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  cpf?: Prisma.SortOrderInput | Prisma.SortOrder
   prontuario?: Prisma.SortOrderInput | Prisma.SortOrder
   idade?: Prisma.SortOrderInput | Prisma.SortOrder
   statusProtocolo?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -298,6 +309,7 @@ export type PacienteScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PacienteScalarWhereWithAggregatesInput | Prisma.PacienteScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
   nome?: Prisma.StringWithAggregatesFilter<"Paciente"> | string
+  cpf?: Prisma.StringNullableWithAggregatesFilter<"Paciente"> | string | null
   prontuario?: Prisma.StringNullableWithAggregatesFilter<"Paciente"> | string | null
   idade?: Prisma.IntNullableWithAggregatesFilter<"Paciente"> | number | null
   statusProtocolo?: Prisma.StringNullableWithAggregatesFilter<"Paciente"> | string | null
@@ -309,6 +321,7 @@ export type PacienteScalarWhereWithAggregatesInput = {
 export type PacienteCreateInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -323,6 +336,7 @@ export type PacienteCreateInput = {
 export type PacienteUncheckedCreateInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -337,6 +351,7 @@ export type PacienteUncheckedCreateInput = {
 export type PacienteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -351,6 +366,7 @@ export type PacienteUpdateInput = {
 export type PacienteUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -365,6 +381,7 @@ export type PacienteUncheckedUpdateInput = {
 export type PacienteCreateManyInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -376,6 +393,7 @@ export type PacienteCreateManyInput = {
 export type PacienteUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -387,6 +405,7 @@ export type PacienteUpdateManyMutationInput = {
 export type PacienteUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -398,6 +417,7 @@ export type PacienteUncheckedUpdateManyInput = {
 export type PacienteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
   prontuario?: Prisma.SortOrder
   idade?: Prisma.SortOrder
   statusProtocolo?: Prisma.SortOrder
@@ -413,6 +433,7 @@ export type PacienteAvgOrderByAggregateInput = {
 export type PacienteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
   prontuario?: Prisma.SortOrder
   idade?: Prisma.SortOrder
   statusProtocolo?: Prisma.SortOrder
@@ -424,6 +445,7 @@ export type PacienteMaxOrderByAggregateInput = {
 export type PacienteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
   prontuario?: Prisma.SortOrder
   idade?: Prisma.SortOrder
   statusProtocolo?: Prisma.SortOrder
@@ -506,6 +528,7 @@ export type PacienteUpdateOneRequiredWithoutScoresEADNestedInput = {
 export type PacienteCreateWithoutFichasACSInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -519,6 +542,7 @@ export type PacienteCreateWithoutFichasACSInput = {
 export type PacienteUncheckedCreateWithoutFichasACSInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -548,6 +572,7 @@ export type PacienteUpdateToOneWithWhereWithoutFichasACSInput = {
 export type PacienteUpdateWithoutFichasACSInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -561,6 +586,7 @@ export type PacienteUpdateWithoutFichasACSInput = {
 export type PacienteUncheckedUpdateWithoutFichasACSInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -574,6 +600,7 @@ export type PacienteUncheckedUpdateWithoutFichasACSInput = {
 export type PacienteCreateWithoutTriagensInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -587,6 +614,7 @@ export type PacienteCreateWithoutTriagensInput = {
 export type PacienteUncheckedCreateWithoutTriagensInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -616,6 +644,7 @@ export type PacienteUpdateToOneWithWhereWithoutTriagensInput = {
 export type PacienteUpdateWithoutTriagensInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -629,6 +658,7 @@ export type PacienteUpdateWithoutTriagensInput = {
 export type PacienteUncheckedUpdateWithoutTriagensInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -642,6 +672,7 @@ export type PacienteUncheckedUpdateWithoutTriagensInput = {
 export type PacienteCreateWithoutScoresEADInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -655,6 +686,7 @@ export type PacienteCreateWithoutScoresEADInput = {
 export type PacienteUncheckedCreateWithoutScoresEADInput = {
   id?: string
   nome: string
+  cpf?: string | null
   prontuario?: string | null
   idade?: number | null
   statusProtocolo?: string | null
@@ -684,6 +716,7 @@ export type PacienteUpdateToOneWithWhereWithoutScoresEADInput = {
 export type PacienteUpdateWithoutScoresEADInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -697,6 +730,7 @@ export type PacienteUpdateWithoutScoresEADInput = {
 export type PacienteUncheckedUpdateWithoutScoresEADInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prontuario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   statusProtocolo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -759,6 +793,7 @@ export type PacienteCountOutputTypeCountScoresEADArgs<ExtArgs extends runtime.Ty
 export type PacienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  cpf?: boolean
   prontuario?: boolean
   idade?: boolean
   statusProtocolo?: boolean
@@ -774,6 +809,7 @@ export type PacienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type PacienteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  cpf?: boolean
   prontuario?: boolean
   idade?: boolean
   statusProtocolo?: boolean
@@ -785,6 +821,7 @@ export type PacienteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type PacienteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  cpf?: boolean
   prontuario?: boolean
   idade?: boolean
   statusProtocolo?: boolean
@@ -796,6 +833,7 @@ export type PacienteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type PacienteSelectScalar = {
   id?: boolean
   nome?: boolean
+  cpf?: boolean
   prontuario?: boolean
   idade?: boolean
   statusProtocolo?: boolean
@@ -804,7 +842,7 @@ export type PacienteSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PacienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "prontuario" | "idade" | "statusProtocolo" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["paciente"]>
+export type PacienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cpf" | "prontuario" | "idade" | "statusProtocolo" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["paciente"]>
 export type PacienteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fichasACS?: boolean | Prisma.Paciente$fichasACSArgs<ExtArgs>
   triagens?: boolean | Prisma.Paciente$triagensArgs<ExtArgs>
@@ -824,6 +862,7 @@ export type $PacientePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     nome: string
+    cpf: string | null
     prontuario: string | null
     idade: number | null
     statusProtocolo: string | null
@@ -1258,6 +1297,7 @@ export interface Prisma__PacienteClient<T, Null = never, ExtArgs extends runtime
 export interface PacienteFieldRefs {
   readonly id: Prisma.FieldRef<"Paciente", 'String'>
   readonly nome: Prisma.FieldRef<"Paciente", 'String'>
+  readonly cpf: Prisma.FieldRef<"Paciente", 'String'>
   readonly prontuario: Prisma.FieldRef<"Paciente", 'String'>
   readonly idade: Prisma.FieldRef<"Paciente", 'Int'>
   readonly statusProtocolo: Prisma.FieldRef<"Paciente", 'String'>

@@ -8,8 +8,8 @@ const supabase_js_1 = require("@supabase/supabase-js");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || '';
+const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY || '';
 if (!supabaseUrl || !supabaseKey) {
-    console.warn("⚠️ Supabase URL e Anon Key não encontrados no ambiente.");
+    console.warn("⚠️ Supabase URL e Publishable Key não encontrados no ambiente.");
 }
 exports.supabase = (0, supabase_js_1.createClient)(supabaseUrl, supabaseKey);

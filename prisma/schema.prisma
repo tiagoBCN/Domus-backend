@@ -11,7 +11,8 @@ datasource db {
 model Paciente {
   id              String         @id @default(uuid())
   nome            String
-  prontuario      String?
+  cpf             String?        @unique
+  prontuario      String?        @unique
   idade           Int?
   statusProtocolo String?
   userId          String? // ID do usuario no Supabase Auth

@@ -80,11 +80,12 @@ app.get('/api/pacientes/:id', authenticateToken, async (req, res) => {
 // Criar paciente
 app.post('/api/pacientes', authenticateToken, async (req, res) => {
     try {
-        const { nome, prontuario, idade, statusProtocolo } = req.body;
+        const { nome, prontuario, idade, statusProtocolo, cpf } = req.body;
         const paciente = await prismaClient_1.default.paciente.create({
             data: {
                 nome,
                 prontuario,
+                cpf,
                 idade,
                 statusProtocolo,
                 userId: req.user.id,

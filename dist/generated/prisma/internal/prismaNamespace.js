@@ -120,6 +120,7 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
 exports.PacienteScalarFieldEnum = {
     id: 'id',
     nome: 'nome',
+    cpf: 'cpf',
     prontuario: 'prontuario',
     idade: 'idade',
     statusProtocolo: 'statusProtocolo',

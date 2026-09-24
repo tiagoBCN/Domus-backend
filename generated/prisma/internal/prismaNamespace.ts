@@ -758,6 +758,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const PacienteScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
+  cpf: 'cpf',
   prontuario: 'prontuario',
   idade: 'idade',
   statusProtocolo: 'statusProtocolo',
